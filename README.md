@@ -2,7 +2,7 @@
 
 ## CRUD for Costumer reviews Web App
 
-### This project is a web app designed to allow costumers to leave reviews for products purcharsed from an online store.
+This project is a web app designed to allow costumers to leave reviews for products purcharsed from an online store.
 
 ## Features
 

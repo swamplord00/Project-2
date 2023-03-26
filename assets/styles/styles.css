@@ -1,0 +1,25 @@
+*{
+    margin:0;
+}
+header{
+    background-color: bisque;
+    width: 100%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+    position: sticky;
+}
+body{
+    width: 100%;
+    background-color: rgb(236, 219, 190);
+}
+
+.logo img{
+    width:10%;
+    padding: 3px;
+}
+nav ul {
+    list-style: none;
+    padding: 10px;
+}

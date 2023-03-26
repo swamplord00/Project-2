@@ -67,5 +67,62 @@ fieldset{
     font-size: 16px;
     resize: none;
  }
+.star-rating{
+    width:10%;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.star-rating a{
+    display:inline-block;
+    color:gray;
+    
+} 
+.star-rating a:hover{
+    color:yellow;
+}
+.star-rating:hover a:hover ~ a{
+    color:gray;
+}
+.reviews{
+    width: 90%;
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    gap:1em;
+    padding-top: 30px;
+
+}
+.opiniones{
+    width: 90%;
+    
+    
+    
+}
+.registro{
+    
+    border:1px solid black;
+    
+}
+.registro {
+    display:flex;
+
+}
+ .post{
+    width:45%;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
 
 
+ }
+ .opciones{
+    width:45%;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+ }

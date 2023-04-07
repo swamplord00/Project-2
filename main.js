@@ -18,13 +18,13 @@ opiniones.forEach((el)=>{
         <a href="#" class="strG">★</a>     
     </div>
     <div class="post">
-        <h3>${el.producto}</h3>
+        <h3> Producto: ${el.producto}</h3>
         <p>${el.review}</p>
-        <h4>${el.autor}</h4>
+        <h4>Firma: ${el.autor}</h4>
     </div>
     <div class="opciones">
-        <button>Editar</button>
-        <button>Eliminar</button>
+        <button class= editBtn>Editar</button>
+        <button class=deleteBtn>Eliminar</button>
     </div>
 </article>`
 })

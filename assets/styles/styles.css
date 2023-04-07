@@ -141,3 +141,17 @@ fieldset{
     display:inline-block;
     color:grey;
 }
+button{
+    color:white;
+    border:none;
+    padding: 5px;;
+}
+button:hover{
+    border:3px solid white;
+}
+.editBtn{
+    background-color: rgb(204, 146, 127);   
+}
+.deleteBtn{
+    background-color: rgb(120, 47, 47);  
+}

@@ -43,6 +43,10 @@ nav ul {
 img{
     padding-top: 5em;
 }
+#imgProduct{
+    height: 400px;
+    width: 400px;
+}
 
 .formulario{
     display:flex;

@@ -44,8 +44,9 @@ img{
     padding-top: 5em;
 }
 #imgProduct{
-    height: 400px;
-    width: 400px;
+    height: 360px;
+    width: 360px;
+    margin:2em;
 }
 
 .formulario{

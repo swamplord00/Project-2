@@ -56,7 +56,7 @@ const imgProduct=document.getElementById('imgProduct')
 const listProduct=document.getElementById('dropdownlist')
 
 
-const getSelectedOption=()=>{
+const setSelectImg=()=>{
     let selectedOption=listProduct.options[listProduct.selectedIndex]
     console.log(`Opcion seleccionada: ${selectedOption.value}`)
     switch (selectedOption.value){
@@ -77,6 +77,6 @@ const getSelectedOption=()=>{
     }
 }
 
-listProduct.addEventListener('change',()=>getSelectedOption())
+listProduct.addEventListener('change',()=>setSelectImg())
 
 

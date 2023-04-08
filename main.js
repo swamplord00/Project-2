@@ -79,4 +79,70 @@ const setSelectImg=()=>{
 
 listProduct.addEventListener('change',()=>setSelectImg())
 
+//CREAR tarjeta de opinion nueva
+
+const tarjeta=document.createElement('article')
+
+tarjeta.className='registro'
+tarjeta.id='nueva'
+
+// Crear div de valoracion
+const stars=document.createElement('div')
+stars.className='new-star-rating'
+
+
+let contYstars=4
+let contGstar=5-contYstars
+
+for(let i=0;i<5;i++){
+    let anchor=document.createElement('a')
+    anchor.src='#'
+    anchor.innerText='★'
+    if(i<contYstars){
+        anchor.className='strY'
+    }else{
+        anchor.className='strG'
+    }
+    stars.appendChild(anchor)
+}
+
+// Crear div de post
+
+const post=document.createElement('div')
+post.className='post'
+
+const productName=document.createElement('h3')
+productName.innerText='Producto:'
+const productReview=document.createElement('p')
+productReview.innerText='reseña de producto'
+const sign=document.createElement('h4')
+sign.innerText='firma:'
+
+post.appendChild(productName)
+post.appendChild(productReview)
+post.appendChild(sign)
+
+// Crear acciones 
+
+const acciones=document.createElement('div')
+acciones.className='opciones'
+
+const btnEdit=document.createElement('button')
+btnEdit.className='editBtn'
+btnEdit.innerText='Editar'
+
+const btnDelete=document.createElement('button')
+btnDelete.className='deleteBtn'
+btnDelete.innerText='Eliminar'
+
+acciones.appendChild(btnEdit)
+acciones.appendChild(btnDelete)
+
+
+tarjeta.appendChild(stars)
+tarjeta.appendChild(post)
+tarjeta.appendChild(acciones)
+contenedor.appendChild(tarjeta)
+
+
 

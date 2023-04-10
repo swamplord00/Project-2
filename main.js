@@ -53,11 +53,11 @@ const imgProduct=document.getElementById('imgProduct')
 
 // Seleccionar Producto
 
-const listProduct=document.getElementById('dropdownlist')
+const formlistProduct=document.getElementById('dropdownlist')
 
 
 const setSelectImg=()=>{
-    let selectedOption=listProduct.options[listProduct.selectedIndex]
+    let selectedOption=formlistProduct.options[formlistProduct.selectedIndex]
     console.log(`Opcion seleccionada: ${selectedOption.value}`)
     switch (selectedOption.value){
         case 'Crema':
@@ -77,9 +77,9 @@ const setSelectImg=()=>{
     }
 }
 
-listProduct.addEventListener('change',()=>setSelectImg())
+formlistProduct.addEventListener('change',()=>setSelectImg())
 
-//CREAR tarjeta de opinion nueva
+//CREAR tarjeta de opinion nueva_______________________
 
 const tarjeta=document.createElement('article')
 
@@ -143,6 +143,45 @@ tarjeta.appendChild(stars)
 tarjeta.appendChild(post)
 tarjeta.appendChild(acciones)
 contenedor.appendChild(tarjeta)
+
+// Seleccionar inputs formulario
+let starsValue=0;
+
+const formrReview=document.getElementById('opinion')
+const formRadios=document.getElementsByName('str')
+const formRadios1=document.getElementById('1str')
+const formRadios2=document.getElementById('2str')
+const formRadios3=document.getElementById('3str')
+const formRadios4=document.getElementById('4str')
+const formRadios5=document.getElementById('5str')
+const formSign=document.getElementById('firma')
+
+
+
+// Crear EventListener
+
+formRadios1.addEventListener('input',handlerRadios)
+formRadios2.addEventListener('input',handlerRadios)
+formRadios3.addEventListener('input',handlerRadios)
+formRadios4.addEventListener('input',handlerRadios)
+formRadios5.addEventListener('input',handlerRadios)
+formlistProduct.addEventListener('input',handlerListProduct)
+formrReview.addEventListener('input',handlerReview)
+formSign.addEventListener('input',handlerSign)
+
+function handlerListProduct(event){
+    console.log(event.target.value)
+}
+function handlerRadios(event){
+    console.log(event.target.value)
+}
+function handlerReview(event){
+    console.log(event.target.value)
+}
+function handlerSign(event){
+    console.log(event.target.value)
+}
+// Crear objeto
 
 
 

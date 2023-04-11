@@ -160,27 +160,26 @@ const formSign=document.getElementById('firma')
 
 // Crear EventListener
 
-formRadios1.addEventListener('input',handlerRadios)
-formRadios2.addEventListener('input',handlerRadios)
-formRadios3.addEventListener('input',handlerRadios)
-formRadios4.addEventListener('input',handlerRadios)
-formRadios5.addEventListener('input',handlerRadios)
-formlistProduct.addEventListener('input',handlerListProduct)
-formrReview.addEventListener('input',handlerReview)
-formSign.addEventListener('input',handlerSign)
+formRadios1.addEventListener('input',handlerInput)
+formRadios2.addEventListener('input',handlerInput)
+formRadios3.addEventListener('input',handlerInput)
+formRadios4.addEventListener('input',handlerInput)
+formRadios5.addEventListener('input',handlerInput)
+formlistProduct.addEventListener('input',handlerInput)
+formrReview.addEventListener('input',handlerInput)
+formSign.addEventListener('input',handlerInput)
 
-function handlerListProduct(event){
-    console.log(event.target.value)
+let reviewObject={}
+function handlerInput(event){
+    // console.log(event.target.value)
+    const {value,name}=event.target
+    reviewObject ={
+        ...reviewObject,
+        [name]:value
+    }
+    console.log(reviewObject)
 }
-function handlerRadios(event){
-    console.log(event.target.value)
-}
-function handlerReview(event){
-    console.log(event.target.value)
-}
-function handlerSign(event){
-    console.log(event.target.value)
-}
+
 // Crear objeto
 
 

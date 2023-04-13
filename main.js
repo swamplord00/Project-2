@@ -145,29 +145,39 @@ tarjeta.appendChild(acciones)
 contenedor.appendChild(tarjeta)
 
 // Seleccionar inputs formulario
-let starsValue=0;
+// let starsValue=0;
 
-const formrReview=document.getElementById('opinion')
-const formRadios=document.getElementsByName('str')
-const formRadios1=document.getElementById('1str')
-const formRadios2=document.getElementById('2str')
-const formRadios3=document.getElementById('3str')
-const formRadios4=document.getElementById('4str')
-const formRadios5=document.getElementById('5str')
-const formSign=document.getElementById('firma')
+// const formrReview=document.getElementById('opinion')
+// // const formRadios=document.getElementsByName('str')
+// const formRadios1=document.getElementById('1str')
+// const formRadios2=document.getElementById('2str')
+// const formRadios3=document.getElementById('3str')
+// const formRadios4=document.getElementById('4str')
+// const formRadios5=document.getElementById('5str')
+// const formSign=document.getElementById('firma')
 
 
+// // Crear EventListener
 
-// Crear EventListener
+// formRadios1.addEventListener('input',handlerInput)
+// formRadios2.addEventListener('input',handlerInput)
+// formRadios3.addEventListener('input',handlerInput)
+// formRadios4.addEventListener('input',handlerInput)
+// formRadios5.addEventListener('input',handlerInput)
+// formlistProduct.addEventListener('input',handlerInput)
+// formrReview.addEventListener('input',handlerInput)
+// formSign.addEventListener('input',handlerInput)
 
-formRadios1.addEventListener('input',handlerInput)
-formRadios2.addEventListener('input',handlerInput)
-formRadios3.addEventListener('input',handlerInput)
-formRadios4.addEventListener('input',handlerInput)
-formRadios5.addEventListener('input',handlerInput)
-formlistProduct.addEventListener('input',handlerInput)
-formrReview.addEventListener('input',handlerInput)
-formSign.addEventListener('input',handlerInput)
+//  Seleccionar inputs y asignar eventos 
+
+const ids=['opinion','dropdownlist','1str','2str','3str','4str','5str','firma']
+
+ids.forEach((id)=>{
+    const element=document.getElementById(id)
+    element.addEventListener('input',handlerInput)
+})
+
+// Crear objeto
 
 let reviewObject={}
 function handlerInput(event){
@@ -180,7 +190,6 @@ function handlerInput(event){
     console.log(reviewObject)
 }
 
-// Crear objeto
 
 
 

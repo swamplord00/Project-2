@@ -23,34 +23,34 @@
     <section class="newPost">
         <img src="./assets/images/product_default.webp" alt="imagen" id="imgProduct">
         <div class="formulario">
-            <form action="">
+            <form id="form">
                 <h2>Escribe tu opinión</h2>
                 <fieldset>
                     <legend>Review</legend>
-                    <label for="dropdownlist">Selecciona tu producto: </label>
-                    <select name="dropdownlist" id="dropdownlist">
-                        <option selected="true" disabled="disabled" value="Default">Selecciona un producto</option>
+                    <label for="dropdownlist" >Selecciona tu producto: </label>
+                    <select name="dropdownlist" id="dropdownlist" required>
+                        <option selected="true" disabled="disabled" value="">Selecciona un producto</option>
                         <option value="Crema">Crema Antifungica</option>
                         <option value="Serum">Serum</option>
                         <option value="Jabon">Jabón de algas</option>
                         <option value="astringente">Locion astringente</option>
                     </select>
                     <label for="opinion">Comentario</label>
-                    <textarea name="review" id="opinion" cols="30" rows="10"></textarea>
+                    <textarea name="review" id="opinion" cols="30" rows="10" required></textarea>
                     <label for="radio">Valoración</label>
                     <div class="radio" id="radio">
-                        <input type="radio" name="str" id="1str" value="1str">
+                        <input type="radio" name="str" id="1str" value=1>
                         <label for="1str">1★</label>
-                        <input type="radio" name="str" id="2str" value="2str">
+                        <input type="radio" name="str" id="2str" value=2>
                         <label for="2str">2★</label>
-                        <input type="radio" name="str" id="3str" value="3str">
+                        <input type="radio" name="str" id="3str" value=3>
                         <label for="3str">3★</label>
-                        <input type="radio" name="str" id="4str" value="4str">
+                        <input type="radio" name="str" id="4str" value=4>
                         <label for="4str">4★</label>
-                        <input type="radio" name="str" id="5str" value="5str" checked>
+                        <input type="radio" name="str" id="5str" value=5 checked>
                         <label for="5str">5★</label>
                     </div>
-                    <label for="firma">Firma</label>
+                    <label for="firma" required>Firma</label>
                     <input type="text" name="firma" id="firma" required minlength="4" maxlength="10">
                     <input type="submit" id="add" value="Publicar">
                 </fieldset>

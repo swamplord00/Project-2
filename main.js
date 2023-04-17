@@ -1,4 +1,4 @@
-//Arreglo de objetos opinion
+//Arreglo de objetos opinion ejemplo
 
 // const opiniones=[
 //     {
@@ -10,8 +10,9 @@
 //     }
 // ]
 
-//Tarjeta de ejemplo
+// Obtener Contenedor Opiniones
 const contenedor = document.getElementById("contenedorOpiniones")
+//Tarjeta de ejemplo
 // opiniones.forEach((el)=>{
 //     contenedor.innerHTML+=`<article class="registro" id=${el.codigo}>
 //     <div class=new-star-rating>
@@ -66,73 +67,73 @@ const setSelectImg = () => {
             break;
     }
 }
-
 formlistProduct.addEventListener('change', () => setSelectImg())
 
-//CREAR tarjeta de opinion nueva_______________________
 
-const tarjeta = document.createElement('article')
+// //CREAR tarjeta de opinion de ejemplo nueva_______________________
 
-tarjeta.className = 'registro'
-tarjeta.id = 'nueva'
+// const tarjeta = document.createElement('article')
 
-// Crear div de valoracion
-const stars = document.createElement('div')
-stars.className = 'new-star-rating'
+// tarjeta.className = 'registro'
+// tarjeta.id = 'nueva'
 
-
-let contYstars = 4
-let contGstar = 5 - contYstars
-
-for (let i = 0; i < 5; i++) {
-    let anchor = document.createElement('a')
-    anchor.src = '#'
-    anchor.innerText = '★'
-    if (i < contYstars) {
-        anchor.className = 'strY'
-    } else {
-        anchor.className = 'strG'
-    }
-    stars.appendChild(anchor)
-}
-
-// Crear div de post
-
-const post = document.createElement('div')
-post.className = 'post'
-
-const productName = document.createElement('h3')
-productName.innerText = 'Producto:'
-const productReview = document.createElement('p')
-productReview.innerText = 'reseña de producto'
-const sign = document.createElement('h4')
-sign.innerText = 'firma:'
-
-post.appendChild(productName)
-post.appendChild(productReview)
-post.appendChild(sign)
-
-// Crear acciones 
-
-const acciones = document.createElement('div')
-acciones.className = 'opciones'
-
-const btnEdit = document.createElement('button')
-btnEdit.className = 'editBtn'
-btnEdit.innerText = 'Editar'
-
-const btnDelete = document.createElement('button')
-btnDelete.className = 'deleteBtn'
-btnDelete.innerText = 'Eliminar'
-
-acciones.appendChild(btnEdit)
-acciones.appendChild(btnDelete)
+// // Crear div de valoracion
+// const stars = document.createElement('div')
+// stars.className = 'new-star-rating'
 
 
-tarjeta.appendChild(stars)
-tarjeta.appendChild(post)
-tarjeta.appendChild(acciones)
-contenedor.appendChild(tarjeta)
+// let contYstars = 4
+// let contGstar = 5 - contYstars
+
+// for (let i = 0; i < 5; i++) {
+//     let anchor = document.createElement('a')
+//     anchor.src = '#'
+//     anchor.innerText = '★'
+//     if (i < contYstars) {
+//         anchor.className = 'strY'
+//     } else {
+//         anchor.className = 'strG'
+//     }
+//     stars.appendChild(anchor)
+// }
+
+// // Crear div de post
+
+// const post = document.createElement('div')
+// post.className = 'post'
+
+// const productName = document.createElement('h3')
+// productName.innerText = 'Producto:'
+// const productReview = document.createElement('p')
+// productReview.innerText = 'reseña de producto'
+// const sign = document.createElement('h4')
+// sign.innerText = 'firma:'
+
+// post.appendChild(productName)
+// post.appendChild(productReview)
+// post.appendChild(sign)
+
+// // Crear acciones 
+
+// const acciones = document.createElement('div')
+// acciones.className = 'opciones'
+
+// const btnEdit = document.createElement('button')
+// btnEdit.className = 'editBtn'
+// btnEdit.innerText = 'Editar'
+
+// const btnDelete = document.createElement('button')
+// btnDelete.className = 'deleteBtn'
+// btnDelete.innerText = 'Eliminar'
+
+// acciones.appendChild(btnEdit)
+// acciones.appendChild(btnDelete)
+
+
+// tarjeta.appendChild(stars)
+// tarjeta.appendChild(post)
+// tarjeta.appendChild(acciones)
+// contenedor.appendChild(tarjeta)
 
 // Seleccionar inputs formulario
 // let starsValue=0;
@@ -167,10 +168,28 @@ ids.forEach((id) => {
     element.addEventListener('input', handlerInput)
 })
 // Crear Array y cargar objetos desde el LS
-const reviewsArrays = []
+let reviewsArrays = []
+cargarArray()
+crearTarj()
+function cargarArray(){
+    
+    const registro=JSON.parse(localStorage.getItem('reviews'))
+    if(registro){
+        reviewsArrays=registro
+    }else{
+        reviewsArrays=[]
+    }
 
+}
 
+function eliminarRegistroLS(){
 
+}
+
+function pushRegistroLS(){
+    localStorage.setItem('reviews', JSON.stringify(reviewsArrays))
+
+}
 
 // Crear objeto
 let reviewObject = {}
@@ -187,7 +206,6 @@ function handlerInput(event) {
 // seleccionar bton formulario
 const btnAdd = document.getElementById('add')
 
-
 //Agregar evento a boton para publicar Review
 btnAdd.addEventListener('click', agregarReview)
 
@@ -195,34 +213,43 @@ function agregarReview(evento) {
     evento.preventDefault();
     alert("hicieron click")
     console.log(Object.values(reviewObject))
-    if (validarForm()) {
-        let id = Date.now()
-        reviewObject = { ...reviewObject, id }
+    
+    if (validarForm(reviewObject)) {
+        agregarID()
+        
+        console.log(reviewObject)
         reviewsArrays.push(reviewObject)
         console.log(reviewsArrays)
-        crearTarj(reviewsArrays)
+        pushRegistroLS()
+        crearTarj()
+        document.getElementById('form').reset()
+
     } else {
+        alert("Debes llenar todos los campos del formulario")
         return;
     }
     
 }
 
-
 //Validar form
 
-let primaryKey
-let isEditing = false
-let idEditing = null
-
-
-function validarForm() {
-
+function validarForm(Nreview) {
+    // const {dropdownlist,review,str, sign}=Nreview
+    let obj=Object.entries(Nreview)
+    if(obj.length<3 ){
+        return false
+    }
     return true
 }
 
-function crearTarj(array) {
+function agregarID(){
+    let id = Date.now()
+    reviewObject = { ...reviewObject, id }
+}
 
-    array.forEach((Nreview)=>{
+function crearTarj() {
+    contenedor.innerHTML=""
+    reviewsArrays.forEach((Nreview)=>{
 
         const tarjeta = document.createElement('article')
     
@@ -234,8 +261,6 @@ function crearTarj(array) {
         stars.className = 'new-star-rating'
         
         if(Nreview.str==undefined){Nreview.str='5'}
-
-        console.log(Nreview.str)
 
         let contYstars = Number(Nreview.str)
         let contGstar = 5 - contYstars
@@ -276,14 +301,15 @@ function crearTarj(array) {
         const btnEdit = document.createElement('button')
         btnEdit.className = 'editBtn'
         btnEdit.innerText = 'Editar'
+        btnEdit.setAttribute('onclick',`editarFila(${Nreview.id})`)
         
         const btnDelete = document.createElement('button')
         btnDelete.className = 'deleteBtn'
         btnDelete.innerText = 'Eliminar'
+        btnDelete.setAttribute('onclick',`eliminarFila(${Nreview.id})`)
 
         acciones.appendChild(btnEdit)
         acciones.appendChild(btnDelete)
-    
     
         tarjeta.appendChild(stars)
         tarjeta.appendChild(post)
@@ -294,6 +320,24 @@ function crearTarj(array) {
 // btnEdit.setAttribute('onclick',´editRow(${id})´)
 
 
-function registrarLS(){
+// Eliminar Fila
+function eliminarFila(id){
+    const index=reviewsArrays.findIndex((review)=>{
+        review.id==id
+    })
+    reviewsArrays.splice(index,1)
+    pushRegistroLS()
+    crearTarj()
+}
 
+function editarFila(id){
+    console.log(reviewsArrays)
+    console.log(id)
+    const reg=reviewsArrays.filter((review)=>{
+        review.id==id
+    })
+    console.log(reg)
+
+    formlistProduct.value=reg.dropdownlist
+    
 }

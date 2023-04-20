@@ -160,3 +160,7 @@ button:hover{
 .deleteBtn{
     background-color: rgb(120, 47, 47);  
 }
+
+.hide{
+    display:none;
+}

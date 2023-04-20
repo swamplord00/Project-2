@@ -159,6 +159,11 @@ formlistProduct.addEventListener('change', () => setSelectImg())
 // formrReview.addEventListener('input',handlerInput)
 // formSign.addEventListener('input',handlerInput)
 
+// Variables de estado Global
+
+let idEditing=null
+let modeEdit=false
+
 //  Seleccionar inputs y asignar eventos 
 
 const ids = ['opinion', 'dropdownlist', '1str', '2str', '3str', '4str', '5str', 'firma']
@@ -243,7 +248,8 @@ function validarForm(Nreview) {
 }
 
 function agregarID(){
-    let id = Date.now()
+    let id
+    (modeEdit)?id=idEditing: id = Date.now()
     reviewObject = { ...reviewObject, id }
 }
 
@@ -333,11 +339,46 @@ function eliminarFila(id){
 function editarFila(id){
     console.log(reviewsArrays)
     console.log(id)
-    const reg=reviewsArrays.filter((review)=>{
-        review.id==id
-    })
-    console.log(reg)
+    const reviewsArraysEdit=reviewsArrays.filter((review)=>review.id==id)
+    console.log(reviewsArraysEdit)
+     
+    document.getElementById('dropdownlist').value= reviewsArraysEdit[0].dropdownlist    
+    document.getElementById('opinion').value=reviewsArraysEdit[0].review  
+    document.getElementById(`${reviewsArraysEdit[0].str}str`).setAttribute('checked','true')
+    document.getElementById('firma').value=reviewsArraysEdit[0].firma
 
-    formlistProduct.value=reg.dropdownlist
+    document.getElementById('add').classList.add('hide')
+    document.getElementById('edit').classList.remove('hide')
+    idEditing=id
+    modeEdit=true
     
 }
+
+document.getElementById('edit').addEventListener('click',actualizar)
+
+function actualizar(event){
+    event.preventDefault()
+    console.log(reviewObject)
+    //recuperar objeto del array
+    const objeto=reviewsArrays.filter((el)=>el.id==idEditing)[0]
+    console.log(objeto)
+    //actualizar datos del objeto
+    const indice=reviewsArrays.findIndex((el)=>el.id==idEditing)
+    const nuevoObjeto={...objeto, ...reviewObject}
+    console.log(nuevoObjeto)
+    reviewsArrays[indice]=nuevoObjeto
+    console.log(reviewsArrays)
+    //Actualiar LS
+    pushRegistroLS()
+    document.getElementById('form').reset()
+
+    // 
+    document.getElementById('add').classList.remove('hide')
+    document.getElementById('edit').classList.add('hide')
+    idEditing=null
+    modeEdit=false
+
+    crearTarj()
+
+}
+

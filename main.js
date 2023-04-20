@@ -196,7 +196,6 @@ function crearTarj() {
         contenedor.appendChild(tarjeta)
     })
 }
-// btnEdit.setAttribute('onclick',´editRow(${id})´)
 
 
 // Eliminar Fila
@@ -220,6 +219,8 @@ function editarFila(id){
     document.getElementById(`${reviewsArraysEdit[0].str}str`).setAttribute('checked','true')
     document.getElementById('firma').value=reviewsArraysEdit[0].firma
 
+
+    setSelectImg()
     // Ocultar boton Publicar y hacer visible el boton actualizar
     document.getElementById('add').classList.add('hide')
     document.getElementById('edit').classList.remove('hide')
@@ -257,11 +258,12 @@ function actualizar(event){
     document.getElementById('add').classList.remove('hide')
     document.getElementById('edit').classList.add('hide')
     // Actualizar variables de control
-    focusCard()
-    idEditing=null
     modeEdit=false
     //actualizar tarjetero desde array
     crearTarj()
+    focusCard()
+    
+    idEditing=null
 
     disableBtns()
 
@@ -285,20 +287,22 @@ function disableBtns(){
 }
 
 // Enfocar elementos en  modo ediciòn
+let fieldset=document.getElementById("fieldset")
+
 function focusCard(){
-
-    const card=document.getElementById(idEditing)
-    const fieldset=document.getElementById("fieldset")
+    
     console.log(fieldset)
-
+    let card=document.getElementById(idEditing)
+    console.log(card)
+    
     if(modeEdit){
         card.style.zoom=1.3
         card.style.border='2px solid orange'
-        fieldset.style.border='2px double orange'
+        fieldset.style.border='2px solid orange'
 
     }else{
-        card.style=1
-        fieldset.style.border='2px solid rgb(109, 90, 148);'
+        fieldset.style.border='2px solid rgb(109, 90, 148)'
+        card.style.zoom=1
     }
 
 }

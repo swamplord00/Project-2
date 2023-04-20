@@ -118,6 +118,10 @@ fieldset{
 
    
 }
+.headRegistro{
+    color:brown;
+    padding:3px 10px 3px 10px;
+}
  .post{
     width:65%;
     display:flex;
@@ -126,7 +130,7 @@ fieldset{
     align-items: center;
     border:1px solid white;
     background-color: rgb(223, 206, 183);
-    padding: 5px;
+    padding:2px 7px 2px 7px;
 
 
  }
@@ -190,4 +194,5 @@ button:disabled{
 
 #fieldset{
     border:2px solid rgb(109, 90, 148);
+
 }

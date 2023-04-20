@@ -205,7 +205,7 @@ function handlerInput(event) {
         ...reviewObject,
         [name]: value
     }
-    console.log(reviewObject)
+    
 }
 
 // seleccionar bton formulario
@@ -305,12 +305,12 @@ function crearTarj() {
         acciones.className = 'opciones'
     
         const btnEdit = document.createElement('button')
-        btnEdit.className = 'editBtn'
+        btnEdit.className = 'editBtn formBtn'
         btnEdit.innerText = 'Editar'
         btnEdit.setAttribute('onclick',`editarFila(${Nreview.id})`)
         
         const btnDelete = document.createElement('button')
-        btnDelete.className = 'deleteBtn'
+        btnDelete.className = 'deleteBtn formBtn'
         btnDelete.innerText = 'Eliminar'
         btnDelete.setAttribute('onclick',`eliminarFila(${Nreview.id})`)
 
@@ -337,20 +337,26 @@ function eliminarFila(id){
 }
 
 function editarFila(id){
-    console.log(reviewsArrays)
-    console.log(id)
+
+    // obtener objeto con el id desde el arreglo
     const reviewsArraysEdit=reviewsArrays.filter((review)=>review.id==id)
-    console.log(reviewsArraysEdit)
-     
+    
+    // obtener inputs del formulario y escribir los valores del objeto correspondiente 
     document.getElementById('dropdownlist').value= reviewsArraysEdit[0].dropdownlist    
     document.getElementById('opinion').value=reviewsArraysEdit[0].review  
     document.getElementById(`${reviewsArraysEdit[0].str}str`).setAttribute('checked','true')
     document.getElementById('firma').value=reviewsArraysEdit[0].firma
 
+    // Ocultar boton Publicar y hacer visible el boton actualizar
     document.getElementById('add').classList.add('hide')
     document.getElementById('edit').classList.remove('hide')
+    // Actualizar variables de control
     idEditing=id
     modeEdit=true
+    // deshabilitar otros botones.
+    disableBtns()
+    focusCard()
+
     
 }
 
@@ -372,13 +378,49 @@ function actualizar(event){
     pushRegistroLS()
     document.getElementById('form').reset()
 
-    // 
+    // ocultar boton actualizar y mostrar boton publicar
     document.getElementById('add').classList.remove('hide')
     document.getElementById('edit').classList.add('hide')
+    // Actualizar variables de control
+    focusCard()
     idEditing=null
     modeEdit=false
-
+    //actualizar tarjetero desde array
     crearTarj()
+
+    disableBtns()
 
 }
 
+function disableBtns(){
+    const btns= document.querySelectorAll('.formBtn')
+    console.log(btns)
+
+    btns.forEach((el)=>{
+        if (modeEdit){
+            el.disabled=true
+            
+        }else{
+            el.disabled=false
+        }        
+    })
+    
+}
+
+function focusCard(){
+
+    const card=document.getElementById(idEditing)
+    const fieldset=document.getElementById("fieldset")
+    console.log(fieldset)
+
+    if(modeEdit){
+        card.style.zoom=1.3
+        card.style.border='2px solid orange'
+        fieldset.style.border='2px double orange'
+
+    }else{
+        card.style=1
+        fieldset.style.border='2px solid rgb(109, 90, 148);'
+    }
+
+}

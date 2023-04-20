@@ -149,10 +149,14 @@ fieldset{
 button{
     color:white;
     border:none;
-    padding: 5px;;
+    padding: 5px;
 }
 button:hover{
     border:3px solid white;
+}
+button:disabled{
+    color:rgb(132, 127, 116);
+    background-color:rgb(215, 200, 164) ;
 }
 .editBtn{
     background-color: rgb(204, 146, 127);   
@@ -163,4 +167,27 @@ button:hover{
 
 .hide{
     display:none;
+}
+
+#add{
+    background-color: rgb(47, 113, 146);
+    border:none;
+    color:white;
+    padding:16px 32px;
+    text-decoration: none;
+    margin:4px 2px;
+    cursor:pointer;
+}
+#edit{
+    background-color: rgb(193, 147, 79);
+    border:none;
+    color:white;
+    padding:16px 32px;
+    text-decoration: none;
+    margin:4px 2px;
+    cursor:pointer;
+}
+
+#fieldset{
+    border:2px solid rgb(109, 90, 148);
 }
